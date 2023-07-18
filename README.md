@@ -58,20 +58,20 @@ The example below uses the Linux [pass](https://www.passwordstore.org/) command 
 Substitute this command for whatever password manager is being used.
 
 ```
-docker run --rm -it -e GIT_NAME="[NAME]" -e GIT_EMAIL="[EMAIL]" -e GIT_PASSWORD=$(pass github) labr
+docker run --rm -it -e GIT_NAME=${NAME} -e GIT_EMAIL=${EMAIL} -e GIT_PASSWORD=${TOKEN} labr
 ```
 
-If `OAUTH` required - add network host
+If `OAUTH` required - add network host. Note this doesnt work from Cloud Shell, unless a proxy is used
 ```
-docker run --rm -it --net=host -e GIT_NAME="[NAME]" -e GIT_EMAIL="[EMAIL]" -e GIT_PASSWORD=$(pass github) labr
+docker run --rm -it --net=host -e GIT_NAME=${NAME} -e GIT_EMAIL=${EMAIL} -e GIT_PASSWORD=${TOKEN} labr
 ```
 
 To substitute with an environment file
 
 1. Create an environment file `labr-env`
 ```
-GIT_NAME=mikey
-GIT_EMAIL=mikey@gmail.com
+GIT_NAME=lab-architects
+GIT_EMAIL=lab-architects@google.com
 GIT_PASSWORD=secret*password
 ```
 
@@ -79,4 +79,9 @@ GIT_PASSWORD=secret*password
 2. Run the command referencing the `lab-env` environment file
 ```
 docker run -it --env-file labr-env labr
+```
+
+3. Clone the Repo
+```
+git clone https://$GIT_NAME:$GIT_PASSWORD@$GIT_REPO
 ```

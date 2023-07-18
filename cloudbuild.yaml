@@ -4,8 +4,8 @@
 # See docs at https://www.packer.io/docs/install/index.html
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'us.gcr.io/$PROJECT_ID/${_LABR_IMAGE}:${_LABR_VERSION}',
-           '-t', 'us.gcr.io/$PROJECT_ID/${_LABR_IMAGE}',
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/${_LABR_IMAGE}:${_LABR_VERSION}',
+           '-t', 'gcr.io/$PROJECT_ID/${_LABR_IMAGE}',
            '.']
 timeout: 900s
 substitutions:           
@@ -13,6 +13,6 @@ substitutions:
   _LABR_IMAGE: labr 
 
 images:
-  - 'us.gcr.io/$PROJECT_ID/${_LABR_IMAGE}:latest'
-  - 'us.gcr.io/$PROJECT_ID/${_LABR_IMAGE}:${_LABR_VERSION}'
+  - 'gcr.io/$PROJECT_ID/${_LABR_IMAGE}:latest'
+  - 'gcr.io/$PROJECT_ID/${_LABR_IMAGE}:${_LABR_VERSION}'
 tags: ['lab-developer']

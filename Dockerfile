@@ -57,4 +57,4 @@ WORKDIR $USER_HOME
 # Install Oh My Bash
 RUN bash -c "$(wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O -)"
 # Replace the theme
-RUN sed -i 's/OSH_THEME="font"/OSH_THEME="agnoster"/g' .bashrc
+#RUN sed -i 's/OSH_THEME="font"/OSH_THEME="agnoster"/g' .bashrc
